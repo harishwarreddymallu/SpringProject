@@ -130,7 +130,21 @@
      
      <div class="container">
     <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNYHx2su9nOj-aa-y1levvH7eWRcuqdRP32w&usqp=CAU" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title" align="center">Register Id</h2>
+            <p class="card-description" align="center" style="color:red"><% out.println(session.getAttribute("ID"));%></p>
+        </div>
+    </div>
+    <div class="card">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH2SXiEUazRgizIP2HftqG_Hlf0DJfKYwXNQ&usqp=CAU" alt="Card Image">
+        <div class="card-content">
+            <h2 class="card-title" align="center">NAME</h2>
+            <p class="card-description" align="center" style="color:red"><% out.println(session.getAttribute("NAME"));%></p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ25XBp_0Z0RMaf8skRAid5_oWygnBZUXiHcg&usqp=CAU" alt="Card Image">
         <div class="card-content">
             <h2 class="card-title" align="center">Total Registrations</h2>
             <p class="card-description" align="center" style="color:red"><% out.println(session.getAttribute("ADDMEMBER"));%></p>
