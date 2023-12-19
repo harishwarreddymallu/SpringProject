@@ -49,7 +49,7 @@ public class AddmemberController {
 									@RequestParam String vaccinetype,
 									@RequestParam int noofdoses,
 									@RequestParam String refemail,
-									Model model) {
+									Model model,HttpServletRequest request) {
 		System.out.println("Name : "+membername);
 		System.out.println("gender : "+gender);
 		System.out.println("dob    : "+dob);
@@ -59,12 +59,16 @@ public class AddmemberController {
 		System.out.println("noofdoses : "+noofdoses);
 		System.out.println("refemail : "+refemail);
 		System.out.println("hey nuv valid aa!!.............");
+		HttpSession session = request.getSession();
 		
 
 		boolean isvalid= addmemberservice.validateAddmember(membername,gender,dob,idProof,idproofno,vaccinetype,noofdoses,refemail);
+		
 		int c=addmemberservice.increment(refemail);
 		RegisterEntity entity =loginDAO.getRegisterEntityBy(refemail);
 		int s=entity.getMembercount();
+		loginController.onLogin((String)session.getAttribute("EMAIL"),(String)session.getAttribute("PASSWORD"),model,request);
+		
 		if(isvalid&&s>0&&s<4) {
 			//check whether the count is 4 or not.
 			model.addAttribute("responseMessage","Registration Successfull! ");
@@ -156,18 +160,20 @@ public class AddmemberController {
 	
 	
 	@RequestMapping(value="/deleteMember/{memberid}")   
-	public ModelAndView deleteMemberDetails(@PathVariable int memberid,ModelMap model){
+	public String deleteMemberDetails(@PathVariable int memberid,Model model,HttpServletRequest request){
 		System.out.println("invoked updateAirport()");
 		MemberEntity entity=addmemberservice.getMemberById(memberid);
+		
+		HttpSession session = request.getSession();
 		
 		try {
 			int c=addmemberservice.decrement(entity.getRefEmail());
 			boolean result=addmemberservice.deletememberEntity(memberid);
 			System.out.println(c);
-			
+			loginController.onLogin((String)session.getAttribute("EMAIL"),(String)session.getAttribute("PASSWORD"),model,request);
 			if(result&&c>0) {
 				
-				model.addAttribute("responseMessage","Member entitywith id "+memberid +" has been deleted!!!");
+				model.addAttribute("responseMessage","Member entitywith id "+ memberid +" has been deleted!!!");
 				
 			}else {
 				model.addAttribute("responseMessage","Something went Wrong!!!");
@@ -176,6 +182,6 @@ public class AddmemberController {
 		}catch(Exception e) {
 			model.addAttribute("responseMessage","Something went Wrong!!!");
 		}
-		return new ModelAndView("redirect:/addmember",model);
+		return "redirect:/addmember";
 	}
 }
