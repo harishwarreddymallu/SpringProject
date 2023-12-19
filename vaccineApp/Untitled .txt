@@ -1,0 +1,25 @@
+boolean isvalid= vaccineservice.validateVaccine(NAME,EMAIL,MOBILE_NO,GENDER,PASSWORD,dob);
+		boolean isvalid2=((Vaccineservice) mailService).validateMailData(NAME,EMAIL,MOBILE_NO,GENDER,PASSWORD,dob);
+		
+		if(isvalid){
+			if(isvalid2) {
+				boolean result=((Vaccineservice) mailService).sendEmail(NAME,EMAIL,MOBILE_NO,GENDER,PASSWORD,dob); 
+				if(result) {
+					model.addAttribute("responseMessage"," Data is Valid & Registered Successfully!! ");
+					return "/WEB-INF/Register.jsp";
+				}
+			}else {
+				
+				model.addAttribute("responseMessage","Invalid data plese try again");
+				
+			}
+		}else {
+			model.addAttribute("responseMessage","Data is not Valid & not Registered Successfully try again");
+			return "/WEB-INF/Register.jsp";
+			
+		}
+		
+		return "/WEB-INF/Register.jsp";
+		
+		
+	}
