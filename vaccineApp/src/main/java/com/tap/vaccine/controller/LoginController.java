@@ -65,6 +65,8 @@ public class LoginController
 			HttpSession session = request.getSession(true);
 			session.setAttribute("EMAIL",email);
 			session.setAttribute("ADDMEMBER",entity.getMembercount());
+			session.setAttribute("NAME",entity.getName());
+			session.setAttribute("ID",entity.getId());
 			return "/WEB-INF/Homepage.jsp";
 			
 		}else {
