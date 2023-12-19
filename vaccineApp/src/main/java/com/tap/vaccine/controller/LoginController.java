@@ -64,6 +64,7 @@ public class LoginController
 			System.out.println("hi i am from sending mail");
 			HttpSession session = request.getSession(true);
 			session.setAttribute("EMAIL",email);
+			session.setAttribute("PASSWORD",entity.getPassword());
 			session.setAttribute("ADDMEMBER",entity.getMembercount());
 			session.setAttribute("NAME",entity.getName());
 			session.setAttribute("ID",entity.getId());
