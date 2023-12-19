@@ -139,7 +139,7 @@
     <div class="card">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH2SXiEUazRgizIP2HftqG_Hlf0DJfKYwXNQ&usqp=CAU" alt="Card Image">
         <div class="card-content">
-            <h2 class="card-title" align="center">NAME</h2>
+            <h2 class="card-title" align="center">Name</h2>
             <p class="card-description" align="center" style="color:red"><% out.println(session.getAttribute("NAME"));%></p>
         </div>
     </div>
