@@ -98,27 +98,12 @@ form{
         <span style="color:green">L</span>
         <span style="color:purple"id="first">S</span>
          <h5 align="right" style="margin-top:-73px;padding:15px;color:black;font-family:Garamond, serif;"><% out.println(session.getAttribute("EMAIL"));%></h5>
-       
-        
-		
-		
-		</h1>
-		
-	
-  		
-        
-       
-     </header>
-		 <br>
-		 <h4 align="center" style="margin-top:-15px;color:red">${responseMessage}</h4>
-		 
-		 
-		 
-     
-         <div class="form-container">
-       
-		
-			<h3 align="center">Update Member Details</h3>
+</h1>
+ </header>
+<br>
+<h4 align="center" style="margin-top:-15px;color:red">${responseMessage}</h4>
+ <div class="form-container">
+ 	<h3 align="center">Update Member Details</h3>
 		    <img src="https://cdn-icons-png.flaticon.com/128/4449/4449949.png" width="50px" height="50px" style="padding-left:45%;">
         	<form  action="${pageContext.request.contextPath}/updateMember"  >
 
@@ -130,9 +115,9 @@ form{
             <input type="text" id="membername" name="membername" required value="${NAME}">
 
             Gender<br><br>
-            <input type="radio" value="Male" id="Male" name="gender"  value="${GENDER}">Male
+            <input type="radio" value="Male" id="Male" name="gender"  value="${GENDER}" required>Male
             
-           	<input type="radio" value="Female" id="Female" name="gender"  value="${GENDER}">Female<br><br>
+           	<input type="radio" value="Female" id="Female" name="gender"  value="${GENDER}" required>Female<br><br>
 
             Date Of Birth<br><br>
             <input type="date" id="dob" name="dob"  required value="${DATE_OF_BIRTH}"><br><br>
